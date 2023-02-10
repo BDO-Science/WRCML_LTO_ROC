@@ -23,11 +23,16 @@ str(NAA_data)
 datelist <- seq(as.Date("1921-11-01"), as.Date("2021-09-30"), by = "day")
 
 #Create function to convert
+#Note that DCC days is # days opened
 month_to_daily<- function(data_in=NAA_data){
   data_in<-data_in %>% mutate(Year=year(Date),Month=month(Date))
-  newdata<-data.frame(Date=datelist,Month=month(datelist),Year=year(datelist)) %>%
-    left_join(data_in %>% select(-Date))
+  newdata<-data.frame(Date=datelist,Month=month(datelist),Year=year(datelist),DayNumber=mday(datelist)) %>%
+    left_join(data_in %>% select(-Date)) %>% mutate(DCC_opened=ifelse(DayNumber<=DCC,"Yes","No")) 
   return(newdata)
 }
 
 daily_NAA<-month_to_daily()
+
+#Export monthly average-forced daily file for WRML model input
+write.csv(daily_NAA,file.path(output_root,"Dailydata_converted_from_Calsim3_NAA.csv"),row.names=F)
+
