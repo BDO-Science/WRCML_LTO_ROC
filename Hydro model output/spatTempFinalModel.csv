@@ -1,0 +1,12 @@
+region,subregion,station,variable,stat,spatAggFun,timeAggLength,timeAggFun,timeLag
+,,DCC,dccPerc,,mean,1,mean,7
+,,dayflow,EXPORTS,,mean,1,mean,7
+,,RBDD,flow,,mean,30,mean,119
+,,dayflow,SAC,,mean,1,mean,14
+,,sherwoodHarbor,secchi,,mean,21,mean,18
+,,dayflow,SJR,,mean,21,mean,7
+,Upper Sacramento River,,waterTemp,,mean,30,mean,23
+,,RBDD,waterTemp,,mean,30,mean,162
+,,RBDD,passEst_WR,,mean,30,mean,162
+,Upper Sacramento River,,catch_WRWild,,mean,21,mean,18
+,,dayflow,YOLO,,mean,14,mean,7
